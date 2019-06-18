@@ -69,6 +69,21 @@ class LinkedList {
     this.length--;
   }
 
+  reverse() {
+    let curr = this.head;
+    let prev = null;
+    let next;
+
+    while (curr) {
+      next = curr.next // 2->3->4...
+      curr.next = prev; // 1->null
+      prev = curr; // 1 -> null
+      curr = next // 2->3->4 prepare for next iteration
+    }
+
+    this.head = prev;
+  }
+
   printList() {
     let node = this.head;
     let printStr = ''
@@ -93,9 +108,11 @@ l2.prepend('l2 rocks');
 l1.insert(5, 'test');
 l1.printList();
 
-l1.remove(2);
+// l1.remove(2);
 // console.dir(l1, {depth: null});
 l1.printList();
+l1.reverse();
+l1.printList()
 
 // console.log('l2: ', l2);
 
